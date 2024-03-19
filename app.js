@@ -7,6 +7,13 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 
 const database = require('./config/db');
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/userRouter');
+var distributorsRouter = require('./routes/distributorRoutes');
+var fruitsRouter = require('./routes/fruitRoutes');
+
+
 var app = express();
 
 // view engine setup
@@ -20,6 +27,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/distributors', distributorsRouter);
+app.use('/fruits', fruitsRouter);
+
+
+
 database.connect();
 
 
